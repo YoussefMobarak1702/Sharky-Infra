@@ -4,13 +4,13 @@ terraform {
   }
 }
 data "google_container_engine_versions" "gke_version" {
-  location       = var.region
+  location       = "us-central1-f"
   version_prefix = "1.27."
 }
 
 resource "google_container_cluster" "sharky-primary" {
   name     = "${var.project_id}-gke"
-  location = var.region
+  location = "us-central1-f"
 
   # We can't create a cluster with no node pool defined, but we want to only use
   # separately managed node pools. So we create the smallest possible default
@@ -25,7 +25,7 @@ resource "google_container_cluster" "sharky-primary" {
 # Separately Managed Node Pool
 resource "google_container_node_pool" "sharky-primary_nodes" {
   name     = google_container_cluster.sharky-primary.name
-  location = var.region
+  location = "us-central1-f"
   cluster  = google_container_cluster.sharky-primary.name
 
   version    = "1.30.8-gke.1162001"
