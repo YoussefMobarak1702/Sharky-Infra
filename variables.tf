@@ -19,6 +19,6 @@ variable "project_id" {
 }
 
 variable "region" {
-  default     = "europe-west8"
+  default     = "europe-west"
   description = "region"
 }
