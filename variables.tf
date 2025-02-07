@@ -19,6 +19,6 @@ variable "project_id" {
 }
 
 variable "region" {
-  default     = "asia-east1"
+  default     = "us-central1-f"
   description = "region"
 }
