@@ -32,6 +32,7 @@ resource "google_container_node_pool" "sharky-primary_nodes" {
   node_count = var.gke_num_nodes
 
   node_config {
+    disk_size_gb = 50
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
