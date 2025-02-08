@@ -8,7 +8,7 @@ data "google_container_engine_versions" "gke_version" {
   version_prefix = "1.27."
 }
 
-resource "google_container_cluster" "sharky-primary" {
+resource "google_container_cluster" "sharky-argocd" {
   name     = "${var.project_id}-gke"
   location = "us-central1-f"
 
@@ -23,10 +23,10 @@ resource "google_container_cluster" "sharky-primary" {
 }
 
 # Separately Managed Node Pool
-resource "google_container_node_pool" "sharky-primary_nodes" {
-  name     = google_container_cluster.sharky-primary.name
+resource "google_container_node_pool" "sharky-argocd_nodes" {
+  name     = google_container_cluster.sharky-argocd.name
   location = "us-central1-f"
-  cluster  = google_container_cluster.sharky-primary.name
+  cluster  = google_container_cluster.sharky-argocd.name
 
   version    = "1.30.8-gke.1162001"
   node_count = var.gke_num_nodes
