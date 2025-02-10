@@ -32,7 +32,7 @@ resource "google_container_node_pool" "sharky-primary_nodes" {
   node_count = var.gke_num_nodes
 
   node_config {
-    disk_size_gb = 10
+    disk_size_gb = 60
     oauth_scopes = [
       "https://www.googleapis.com/auth/logging.write",
       "https://www.googleapis.com/auth/monitoring",
@@ -43,7 +43,7 @@ resource "google_container_node_pool" "sharky-primary_nodes" {
     }
 
     # preemptible  = true
-    machine_type = "e2-medium"
+    machine_type = "c2d-standard-4"
     tags         = ["gke-node", "${var.project_id}-gke"]
     metadata = {
       disable-legacy-endpoints = "true"
